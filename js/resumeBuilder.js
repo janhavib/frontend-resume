@@ -1,35 +1,4 @@
-
-var name = "Janhavi Bhedasgaonkar";
-var role = "Web Developer";
-
-
-var formattedName  = HTMLheaderName.replace("%data%",name);
-var formattedRole = HTMLheaderRole.replace("%data%",role);
-$("#header").prepend(formattedRole);
-$("#header").prepend(formattedName);
-
-var pictureUrl = './images/fry.jpg';
-var mybioPic  = HTMLbioPic.replace("%data%",pictureUrl);
-$("#header").append(mybioPic);
-//ContactInfo Header
-
-var contactInfo = $("#topContacts");
-var formattedMobile = HTMLmobile.replace("%data%","408-220-5497");
-contactInfo.append(formattedMobile);
-var formattedEmail = HTMLemail.replace("%data%","janhavibhedasgaonkar@gmail.com");
-contactInfo.append(formattedEmail);
-var formattedGithub = HTMLgithub.replace("%data%","https://github.com/janhavib");
-contactInfo.append(formattedGithub);
-
-
-//ContactInfo Footer
-var contactFooter = $("#footerContacts");
-var formattedMobile = HTMLmobile.replace("%data%","408-220-5497");
-contactFooter.append(formattedMobile);
-var formattedEmail = HTMLemail.replace("%data%","janhavibhedasgaonkar@gmail.com");
-contactFooter.append(formattedEmail);
-var formattedGithub = HTMLgithub.replace("%data%","https://github.com/janhavib");
-contactFooter.append(formattedGithub);
+use strict;
 //Bio Object
 var bio = {
 	"name":"Janhavi Bhedasgaonkar",
@@ -40,7 +9,7 @@ var bio = {
 		"githubid":"janhavibhedasgaonkar",
 		"location":"Sunnyvale, CA"
 	},
-	"pictureUrl": pictureUrl,
+	"pictureUrl": './images/fry.jpg',
 	"welcomeMsg":"Hi! Check this out!",
 	"skills":["JavaScript","AngularJS","Node.js","CSS","HTML"]
 };
@@ -49,17 +18,37 @@ var bio = {
 bio.display = function(){
 	if(bio.skills.length > 0){
 		$("#header").append(HTMLskillsStart);
-		var formattedSkill = HTMLskills.replace("%data%",bio.skills[0]);
-		$("#skills").append(formattedSkill);
-		formattedSkill = HTMLskills.replace("%data%",bio.skills[1]);
-		$("#skills").append(formattedSkill);
-		formattedSkill = HTMLskills.replace("%data%",bio.skills[2]);
-		$("#skills").append(formattedSkill);
-		formattedSkill = HTMLskills.replace("%data%",bio.skills[3]);
-		$("#skills").append(formattedSkill);
-		formattedSkill = HTMLskills.replace("%data%",bio.skills[4]);
-		$("#skills").append(formattedSkill);
+		for(var i = 0 ; i < bio.skills.length;i++){
+			var formattedSkill = HTMLskills.replace("%data%",bio.skills[i]);
+			$("#skills").append(formattedSkill);
+		}
 	}
+	var formattedName  = HTMLheaderName.replace("%data%",bio.name);
+	var formattedRole = HTMLheaderRole.replace("%data%",bio.role);
+	$("#header").prepend(formattedRole);
+	$("#header").prepend(formattedName);
+
+	var mybioPic  = HTMLbioPic.replace("%data%",bio.pictureUrl);
+	$("#header").append(mybioPic);
+ 	//ContactInfo Header
+
+	var contactInfo = $("#topContacts");
+	var formattedMobile = HTMLmobile.replace("%data%",bio.contacts.mobileNo);
+	contactInfo.append(formattedMobile);
+	var formattedEmail = HTMLemail.replace("%data%",bio.contacts.emailid);
+	contactInfo.append(formattedEmail);
+	var formattedGithub = HTMLgithub.replace("%data%",bio.contacts.github);
+	contactInfo.append(formattedGithub);
+
+
+ 	//ContactInfo Footer
+	var contactFooter = $("#footerContacts");
+	var formattedMobile = HTMLmobile.replace("%data%",bio.contacts.mobileNo);
+	contactFooter.append(formattedMobile);
+	var formattedEmail = HTMLemail.replace("%data%",bio.contacts.emailid);
+	contactFooter.append(formattedEmail);
+	var formattedGithub = HTMLgithub.replace("%data%",bio.contacts.github);
+	contactFooter.append(formattedGithub);
 }
 
 bio.display();
@@ -134,7 +123,7 @@ var education = {
 
 
 education.display  = function(){
-	for(var i in education.schools){
+	for(var i=0 ; i < education.schools.length; i++){
 		$("#education").append(HTMLschoolStart);
 		var formattedSchoolName = HTMLschoolName.replace("%data%",education.schools[i].name);
 		$(".education-entry:last").append(formattedSchoolName);
@@ -148,7 +137,7 @@ education.display  = function(){
 		$(".education-entry:last").append(formattedSchoolMajor);
 	}
 
-	for(var i in education.onlineCourses){
+	for(var i=0 ; i < education.onlineCourses.length ;i++){
 		$("#education").append(HTMLonlineClasses);
 		$("#education").append(HTMLschoolStart);
 		var formattedOnlineTitle = HTMLonlineTitle.replace("%data%",education.onlineCourses[i].name);
@@ -190,7 +179,7 @@ var projects = {
 };
 
 projects.display = function(){
-	for(var i in this.projects){
+	for(var i = 0 ; i < this.projects.length ; i++){
 		$("#projects").append(HTMLprojectStart);
 		var formattedTitle = HTMLprojectTitle.replace("%data%",this.projects[i].title);
 		$(".project-entry:last").append(formattedTitle);
