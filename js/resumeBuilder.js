@@ -1,4 +1,4 @@
-use strict;
+'use strict';
 //Bio Object
 var bio = {
 	"name":"Janhavi Bhedasgaonkar",
@@ -37,7 +37,7 @@ bio.display = function(){
 	contactInfo.append(formattedMobile);
 	var formattedEmail = HTMLemail.replace("%data%",bio.contacts.emailid);
 	contactInfo.append(formattedEmail);
-	var formattedGithub = HTMLgithub.replace("%data%",bio.contacts.github);
+	var formattedGithub = HTMLgithub.replace("%data%",bio.contacts.githubid);
 	contactInfo.append(formattedGithub);
 
 
@@ -47,7 +47,7 @@ bio.display = function(){
 	contactFooter.append(formattedMobile);
 	var formattedEmail = HTMLemail.replace("%data%",bio.contacts.emailid);
 	contactFooter.append(formattedEmail);
-	var formattedGithub = HTMLgithub.replace("%data%",bio.contacts.github);
+	var formattedGithub = HTMLgithub.replace("%data%",bio.contacts.githubid);
 	contactFooter.append(formattedGithub);
 }
 
